@@ -56,9 +56,6 @@ public class SunBeat extends JFrame {
 	
 	private void init() { 
 		
-		isMainScreen = false;
-		isLoadingScreen = false;
-		
 		startbtn.setBounds(300, 250, 240, 500);
 		startbtn.setBorderPainted(false);
 		startbtn.setOpaque(false);
@@ -87,44 +84,42 @@ public class SunBeat extends JFrame {
 				rulebtn.setVisible(false);
 				rankbtn.setVisible(false);
 				isMainScreen = true;
-				isGameScreen= true;
-				//gameScreen = new ImageIcon(Main.class.getResource("../Images/GameScreen.png")).getImage();
-				isLoadingScreen = false;
+				mainScreen = new ImageIcon(Main.class.getResource("../Images/GameScreen.png")).getImage();
 			}
 		});
 
 		add(startbtn);
 
-		rulebtn.setBounds(530, 250, 240, 500);
-		rulebtn.setBorderPainted(false);
-		rulebtn.setOpaque(false);
-		rulebtn.setContentAreaFilled(false);
-		rulebtn.setFocusPainted(false);
-		rulebtn.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				rulebtn.setIcon(darkruleBtn);
-				rulebtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				rulebtn.setIcon(ruleBtn);
-				rulebtn.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				startbtn.setVisible(false); 
-				rulebtn.setVisible(false);
-				rankbtn.setVisible(false);
-				isLoadingScreen = true; 
-				startbtn.setBounds(888, 350, 350, 500);
-				startbtn.setVisible(true);
-			}
-		});
-		add(rulebtn);
+//		rulebtn.setBounds(530, 250, 240, 500);
+//		rulebtn.setBorderPainted(false);
+//		rulebtn.setOpaque(false);
+//		rulebtn.setContentAreaFilled(false);
+//		rulebtn.setFocusPainted(false);
+//		rulebtn.addMouseListener(new MouseAdapter() {
+//
+//			@Override
+//			public void mouseEntered(MouseEvent e) {
+//				rulebtn.setIcon(darkruleBtn);
+//				rulebtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+//			}
+//
+//			@Override
+//			public void mouseExited(MouseEvent e) {
+//				rulebtn.setIcon(ruleBtn);
+//				rulebtn.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+//			}
+//
+//			@Override
+//			public void mousePressed(MouseEvent e) {
+//				startbtn.setVisible(false); 
+//				rulebtn.setVisible(false);
+//				rankbtn.setVisible(false);
+//				isLoadingScreen = true; 
+//				startbtn.setBounds(888, 350, 350, 500);
+//				startbtn.setVisible(true);
+//			}
+//		});
+//		add(rulebtn);
 
 		rankbtn.setBounds(770, 250, 240, 500);
 		rankbtn.setBorderPainted(false);
