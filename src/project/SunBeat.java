@@ -90,36 +90,36 @@ public class SunBeat extends JFrame {
 
 		add(startbtn);
 
-//		rulebtn.setBounds(530, 250, 240, 500);
-//		rulebtn.setBorderPainted(false);
-//		rulebtn.setOpaque(false);
-//		rulebtn.setContentAreaFilled(false);
-//		rulebtn.setFocusPainted(false);
-//		rulebtn.addMouseListener(new MouseAdapter() {
-//
-//			@Override
-//			public void mouseEntered(MouseEvent e) {
-//				rulebtn.setIcon(darkruleBtn);
-//				rulebtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-//			}
-//
-//			@Override
-//			public void mouseExited(MouseEvent e) {
-//				rulebtn.setIcon(ruleBtn);
-//				rulebtn.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-//			}
-//
-//			@Override
-//			public void mousePressed(MouseEvent e) {
-//				startbtn.setVisible(false); 
-//				rulebtn.setVisible(false);
-//				rankbtn.setVisible(false);
-//				isLoadingScreen = true; 
-//				startbtn.setBounds(888, 350, 350, 500);
-//				startbtn.setVisible(true);
-//			}
-//		});
-//		add(rulebtn);
+		rulebtn.setBounds(530, 250, 240, 500);
+		rulebtn.setBorderPainted(false);
+		rulebtn.setOpaque(false);
+		rulebtn.setContentAreaFilled(false);
+		rulebtn.setFocusPainted(false);
+		rulebtn.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				rulebtn.setIcon(darkruleBtn);
+				rulebtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				rulebtn.setIcon(ruleBtn);
+				rulebtn.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				startbtn.setVisible(true); 
+				startbtn.setBounds(888, 350, 350, 500);
+				rulebtn.setVisible(false);
+				rankbtn.setVisible(false);
+				isLoadingScreen = true; 
+				
+			}
+		});
+		add(rulebtn);
 
 		rankbtn.setBounds(770, 250, 240, 500);
 		rankbtn.setBorderPainted(false);
@@ -157,7 +157,7 @@ public class SunBeat extends JFrame {
 	public void screenDraw(Graphics g) {
 		g.drawImage(mainScreen,0,0,null);
 		if (isMainScreen) {
-			g.drawImage(selectImage, 0, 0, null);
+			g.drawImage(selectImage, 400, 250, null);
 		}
 		if (isLoadingScreen) {
 			g.drawImage(loadingScreen, 0, 0, null);
