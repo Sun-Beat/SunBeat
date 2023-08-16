@@ -38,6 +38,7 @@ public class SunBeat extends JFrame {
    private JButton darkrankbtn = new JButton(darkRankBtn);
 
 
+<<<<<<< Updated upstream
    private boolean isMainScreen, isLoadingScreen, isGameScreen;  
    
    public SunBeat() {
@@ -64,6 +65,34 @@ public class SunBeat extends JFrame {
       
       
       startbtn.addMouseListener(new MouseAdapter() {
+=======
+	private boolean isMainScreen = false, isLoadingScreen, isGameScreen;
+	
+	public SunBeat() {
+		setTitle("SunBeat");
+		setUndecorated(true);
+		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+		setResizable(false);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		setBackground(new Color(0, 0, 0, 0));
+		setLayout(null);
+		
+		init();
+	}
+	
+	private void init() { 
+		
+		startbtn.setBounds(300, 250, 240, 500);
+		startbtn.setBorderPainted(false);
+		startbtn.setOpaque(false);
+		startbtn.setContentAreaFilled(false);
+		startbtn.setFocusPainted(false);
+		
+		
+		startbtn.addMouseListener(new MouseAdapter() {
+>>>>>>> Stashed changes
 
          //마우스 커서 없애기
          @Override
@@ -88,7 +117,20 @@ public class SunBeat extends JFrame {
          }
       });
 
+<<<<<<< Updated upstream
       add(startbtn);
+=======
+			@Override
+			
+			public void mousePressed(MouseEvent e) {
+				startbtn.setVisible(false); 
+				rulebtn.setVisible(false);
+				rankbtn.setVisible(false);
+				isMainScreen = true;
+				isLoadingScreen = false;
+			}
+		});
+>>>>>>> Stashed changes
 
       rulebtn.setBounds(530, 250, 240, 500);
       rulebtn.setBorderPainted(false);
@@ -128,10 +170,24 @@ public class SunBeat extends JFrame {
       rankbtn.setFocusPainted(false);
       rankbtn.addMouseListener(new MouseAdapter() {
 
+<<<<<<< Updated upstream
          public void mouseEntered(MouseEvent e) {
             rankbtn.setIcon(darkRankBtn);
             rankbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
          }
+=======
+			@Override
+			public void mousePressed(MouseEvent e) {
+				startbtn.setVisible(false); 
+				rulebtn.setVisible(false);
+				rankbtn.setVisible(false);
+				isLoadingScreen = true;
+				startbtn.setBounds(888, 350, 350, 500);
+				startbtn.setVisible(true);
+			}
+		});
+		add(rulebtn);
+>>>>>>> Stashed changes
 
          public void mouseExited(MouseEvent e) {
             rankbtn.setIcon(rankBtn);
@@ -147,6 +203,7 @@ public class SunBeat extends JFrame {
 
    }
 
+<<<<<<< Updated upstream
    public void paint(Graphics g) {
       screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
       screenGraphic = screenImage.getGraphics();
@@ -168,6 +225,37 @@ public class SunBeat extends JFrame {
       paintComponents(g); 
       this.repaint();
    }
+=======
+			public void mousePressed(MouseEvent e) {
+				System.exit(0);
+			}
+		});
+		add(rankbtn);
+
+	}
+
+	public void paint(Graphics g) {
+		screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+		screenGraphic = screenImage.getGraphics();
+		screenDraw(screenGraphic);
+		g.drawImage(screenImage, 0, 0, null);
+	}
+
+	public void screenDraw(Graphics g) {
+		g.drawImage(mainScreen,0,0,null);
+		if (isMainScreen) {
+			g.drawImage(selectImage, 340,200,null);
+		}
+		if (isLoadingScreen) {
+			g.drawImage(loadingScreen, 0, 0, null);
+		}
+		if(isGameScreen) {
+			g.drawImage(gameScreen,0,0,null);
+		}
+		paintComponents(g); 
+		this.repaint();
+	}
+>>>>>>> Stashed changes
 }
 
 
