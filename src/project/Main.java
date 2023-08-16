@@ -9,7 +9,7 @@ public class Main {
 		
 		new SunBeat();   //뇽안
 		
-		System.out.println("hi");
+		System.out.println("hi");  //test
 
 
 		
