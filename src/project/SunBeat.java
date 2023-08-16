@@ -37,7 +37,6 @@ public class SunBeat extends JFrame {
 	private JButton rankbtn = new JButton(rankBtn);
 	private JButton darkrankbtn = new JButton(darkRankBtn);
 
-	private int mouseX, mouseY;
 
 	private boolean isMainScreen, isLoadingScreen, isGameScreen;  
 	
@@ -60,7 +59,6 @@ public class SunBeat extends JFrame {
 		isMainScreen = false;
 		isLoadingScreen = false;
 		
-		
 		startbtn.setBounds(300, 250, 240, 500);
 		startbtn.setBorderPainted(false);
 		startbtn.setOpaque(false);
@@ -81,11 +79,9 @@ public class SunBeat extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				startbtn.setIcon(startBtn);
 				startbtn.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-
 			}
 
 			@Override
-			
 			public void mousePressed(MouseEvent e) {
 				startbtn.setVisible(false); 
 				rulebtn.setVisible(false);
@@ -116,7 +112,6 @@ public class SunBeat extends JFrame {
 			public void mouseExited(MouseEvent e) {
 				rulebtn.setIcon(ruleBtn);
 				rulebtn.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-
 			}
 
 			@Override
