@@ -7,8 +7,11 @@ public class Main {
 	
 	public static void main(String args[]) {
 		
-		new SunBeat(); 
+		new SunBeat();   //뇽안
 		
+		System.out.println("hi");
+
+
 		
 	}
 }
