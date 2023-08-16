@@ -8,7 +8,5 @@ public class Main {
 	public static void main(String args[]) {
 		
 		new SunBeat();  
-		System.out.println("바보");
-		
 	}
 }
