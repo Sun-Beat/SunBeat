@@ -65,7 +65,6 @@ public class SunBeat extends JFrame {
 		
 		startbtn.addMouseListener(new MouseAdapter() {
 
-			//마우스 커서 없애기
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				startbtn.setIcon(darkStartBtn);
@@ -139,7 +138,6 @@ public class SunBeat extends JFrame {
 			}
 
 			public void mousePressed(MouseEvent e) {
-				//isMainScreen = true;
 				System.exit(0);
 			}
 		});
@@ -169,36 +167,3 @@ public class SunBeat extends JFrame {
 		this.repaint();
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
