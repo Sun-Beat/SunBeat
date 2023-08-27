@@ -114,7 +114,8 @@ public class SunBeat extends JFrame {
 				startbtn.setBounds(888, 350, 350, 500);
 				rulebtn.setVisible(false);
 				rankbtn.setVisible(false);
-				isLoadingScreen = true; 
+				mainScreen = new ImageIcon(Main.class.getResource("../Images/loadingScreen.png")).getImage();
+
 				
 			}
 		});
@@ -149,19 +150,19 @@ public class SunBeat extends JFrame {
 		screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		screenGraphic = screenImage.getGraphics();
 		screenDraw(screenGraphic);
-		g.drawImage(screenImage, 0, 0, null);
+		g.drawImage(screenImage, 0, 0, this);
 	}
 
 	public void screenDraw(Graphics g) {
-		g.drawImage(mainScreen,0,0,null);
+		g.drawImage(mainScreen,0,0,this);
 		if (isMainScreen) {
-			g.drawImage(selectImage, 400, 250, null);
+			g.drawImage(selectImage, 400, 250, this);
 		}
 		if (isLoadingScreen) {
-			g.drawImage(loadingScreen, 0, 0, null);
+			g.drawImage(loadingScreen, 0, 0, this);
 		}
 		if(isGameScreen) {
-			g.drawImage(gameScreen,0,0,null);
+			g.drawImage(gameScreen,0,0,this);
 		}
 		paintComponents(g); 
 		this.repaint();
