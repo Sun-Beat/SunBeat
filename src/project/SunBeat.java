@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -58,10 +58,11 @@ public class SunBeat extends JFrame {
 	private JButton darkeasybtn = new JButton(darkEasyBtn);
 
 
-
-
-
 	private boolean isMainScreen, isLoadingScreen, isGameScreen;  
+	
+	ArrayList<Track> trackList = new ArrayList<Track>();
+	
+	private Music selectedMusic;
 	
 	public SunBeat() {
 		setTitle("SunBeat");
