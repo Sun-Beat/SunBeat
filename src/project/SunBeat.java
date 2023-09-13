@@ -66,6 +66,9 @@ public class SunBeat extends JFrame {
 	
 	
 	public SunBeat() {
+		Music intoMusic = new Music("../music/intro.mp3",true);
+		intoMusic.start();
+		
 		setTitle("SunBeat");
 		setUndecorated(true);
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
@@ -78,8 +81,7 @@ public class SunBeat extends JFrame {
 		
 		init();
 		
-		Music intoMusic = new Music("intoMusic.mp3",true);
-		intoMusic.start();
+		
 		
 	
 	}
