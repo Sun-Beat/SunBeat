@@ -24,7 +24,6 @@ public class SunBeat extends JFrame {
 	private Image titleImage = new ImageIcon(Main.class.getResource("../Images/title kill this love.png")).getImage();
 
 
-
 	private ImageIcon startBtn = new ImageIcon(Main.class.getResource("../Images/startBtn.png"));
 	private ImageIcon darkStartBtn = new ImageIcon(Main.class.getResource("../Images/darkStartBtn.png"));
 	private ImageIcon ruleBtn = new ImageIcon(Main.class.getResource("../Images/ruleBtn.png"));
@@ -80,10 +79,7 @@ public class SunBeat extends JFrame {
 		setLayout(null);
 		
 		init();
-		
-		
-		
-	
+
 	}
 	
 	private void init() { 
