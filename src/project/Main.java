@@ -1,4 +1,4 @@
-package project;
+package project; 	
 
 public class Main {
 	
@@ -7,7 +7,6 @@ public class Main {
 	
 	public static void main(String args[]) {
 		
-		
-		new SunBeat();  
+		new SignUp();
 	}
 }
