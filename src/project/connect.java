@@ -11,7 +11,7 @@ public class connect {
         Connection conn = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/codi";
+            String url = "jdbc:mysql://localhost:3306/sunbeat";
             conn = DriverManager.getConnection(url, "root", "0000");
             System.out.println("연결성공");
         }
