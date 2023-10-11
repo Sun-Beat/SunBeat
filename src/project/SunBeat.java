@@ -20,8 +20,7 @@ public class SunBeat extends JFrame {
 	private Image mainScreen = new ImageIcon(Main.class.getResource("../Images/mainScreen.png")).getImage();
 	private Image loadingScreen = new ImageIcon(Main.class.getResource("../Images/gameRuleScreen.png")).getImage();
 	private Image gameScreen=  new ImageIcon(Main.class.getResource("../Images/GameScreen.png")).getImage();
-	private Image selectImage = new ImageIcon(Main.class.getResource("../Images/kill this love.png")).getImage();
-	private Image titleImage = new ImageIcon(Main.class.getResource("../Images/title kill this love.png")).getImage();
+
 
 
 	private ImageIcon startBtn = new ImageIcon(Main.class.getResource("../Images/startBtn.png"));
@@ -62,6 +61,9 @@ public class SunBeat extends JFrame {
 	ArrayList<Track> trackList = new ArrayList<Track>();
 	
 	private Music selectedMusic;
+	private Image selectedImage ;
+	private Image titleImage;
+	private int nowSelected=0;
 	
 	
 	public SunBeat() {
@@ -116,6 +118,7 @@ public class SunBeat extends JFrame {
 				rankbtn.setVisible(false);
 				isMainScreen = true;
 				mainScreen = new ImageIcon(Main.class.getResource("../Images/GameScreen.png")).getImage();
+				
 				rightbtn.setVisible(true);
 				leftbtn.setVisible(true);
 				easybtn.setVisible(true);
@@ -296,5 +299,13 @@ public class SunBeat extends JFrame {
 		}
 		paintComponents(g); 
 		this.repaint();
+	}
+	public void selectTrack(int nowSelected) {
+		if(selectedMusic!=null)
+			selectedMusic.close();
+		titleImage=new ImageIcon(Main.class.getResource("../images/"+trackList.get(nowSelected).getTitleImage())).getImage();
+		selectedImage =new ImageIcon(Main.class.getResource("../images/"+trackList.get(nowSelected).getStartImage())).getImage();
+		selectedMusic=new Music(trackList.get(nowSelected).getStartMusic(),true);
+		selectedMusic.start();
 	}
 }
