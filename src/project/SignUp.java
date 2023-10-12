@@ -7,6 +7,10 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -29,6 +33,56 @@ public class SignUp extends JFrame {
     private JButton signUpButton;
 
     public SignUp() {
+    	completeBtn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                // 사용자가 입력한 ID를 얻어옵니다.
+                String userId = idField.getText();
+
+                // 데이터베이스 연결 정보 설정
+                String jdbcUrl = "jdbc:mysql://localhost:3306/sunbeat";
+                String username = "root";
+                String password = "0000";
+
+                Connection connection = null;
+                PreparedStatement preparedStatement = null;
+
+                try {
+                    // 데이터베이스에 연결
+                    connection = DriverManager.getConnection(jdbcUrl, username, password);
+
+                    // SQL 쿼리 준비
+                    String sql = "INSERT INTO sunbeat (id) VALUES (?)"; // users 테이블에 ID를 저장
+                    preparedStatement = connection.prepareStatement(sql);
+
+                    // ? 자리에 사용자가 입력한 ID를 설정
+                    preparedStatement.setString(1, userId);
+
+                    // SQL 쿼리 실행
+                    int rowsAffected = preparedStatement.executeUpdate();
+
+                    if (rowsAffected > 0) {
+                        System.out.println("ID가 성공적으로 데이터베이스에 저장되었습니다.");
+                        // 성공 메시지 또는 원하는 동작 수행
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    // 오류 처리
+                } finally {
+                    // 리소스 해제
+                    try {
+                        if (preparedStatement != null) {
+                            preparedStatement.close();
+                        }
+                        if (connection != null) {
+                            connection.close();
+                        }
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });
         setUndecorated(true);
         setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
         setResizable(false);

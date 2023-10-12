@@ -42,9 +42,9 @@ public class ranking extends JFrame {
     }
 
     private void saveScoreToDatabase() {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/score"; // 데이터베이스 URL 수정
-        String username = "root"; // 데이터베이스 사용자명 수정
-        String password = "0000"; // 데이터베이스 비밀번호 수정
+        String jdbcUrl = "jdbc:mysql://localhost:3306/score"; 
+        String username = "root"; 
+        String password = "0000"; 
 
         int userId = Integer.parseInt(userIdField.getText());
         int score = Integer.parseInt(scoreField.getText());
@@ -64,13 +64,13 @@ public class ranking extends JFrame {
         }
     }
 
-////    public static void main(String[] args) {
-////        SwingUtilities.invokeLater(new Runnable() {
-////            public void run() {
-////                new ranking().setVisible(true);
-////            }
-////        });
-//    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+        public void run() {
+             new ranking().setVisible(true);
+          }
+       });
+    }
 }
 
 
