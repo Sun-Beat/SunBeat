@@ -67,13 +67,45 @@ public class ranking extends JFrame {
 			}
 		});
 
+<<<<<<< HEAD
+    private void saveScoreToDatabase() {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/score"; 
+        String username = "root"; 
+        String password = "0000"; 
+=======
 		add(rankbtn);
 	}
+>>>>>>> 306164155ecf1993650a835d0cc3506c03b043f4
 
 	public void screenDraw(Graphics g) {
 		g.drawImage(ranking, 0, 0, this);
 
+<<<<<<< HEAD
+        try {
+            Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
+            String sql = "INSERT INTO score (user_id, score) VALUES (?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, score);
+            preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(this, "점수가 저장되었습니다.");
+            connection.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "오류 발생: " + ex.getMessage(), "오류", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+        public void run() {
+             new ranking().setVisible(true);
+          }
+       });
+    }
+=======
 		paintComponents(g);
 		this.repaint();
 	}
+>>>>>>> 306164155ecf1993650a835d0cc3506c03b043f4
 }
