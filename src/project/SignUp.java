@@ -23,17 +23,17 @@ public class SignUp extends JFrame {
     private Graphics screenGraphic;
     private Image firstScreen = new ImageIcon(Main.class.getResource("../Images/firstScreen.png")).getImage();
     
-	private ImageIcon completebtn = new ImageIcon(Main.class.getResource("../Images/completebtn.png"));
-	private ImageIcon darkcompleteBtn = new ImageIcon(Main.class.getResource("../Images/darkcompleteBtn.png"));
+   private ImageIcon completebtn = new ImageIcon(Main.class.getResource("../Images/completebtn.png"));
+   private ImageIcon darkcompleteBtn = new ImageIcon(Main.class.getResource("../Images/darkcompleteBtn.png"));
 
-	private JButton completeBtn = new JButton(completebtn);
-	private JButton darkcompletebtn = new JButton(darkcompleteBtn);
+   private JButton completeBtn = new JButton(completebtn);
+   private JButton darkcompletebtn = new JButton(darkcompleteBtn);
 
     private JTextField idField;
     private JButton signUpButton;
 
     public SignUp() {
-    	completeBtn.addMouseListener(new MouseAdapter() {
+       completeBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 // 사용자가 입력한 ID를 얻어옵니다.
@@ -112,29 +112,29 @@ public class SignUp extends JFrame {
         completeBtn.setBorderPainted(false);
         completeBtn.setOpaque(false);
         completeBtn.setContentAreaFilled(false);
-		completeBtn.setFocusPainted(false);	
-	
-		completeBtn.addMouseListener(new MouseAdapter() {
+      completeBtn.setFocusPainted(false);   
+   
+      completeBtn.addMouseListener(new MouseAdapter() {
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				completeBtn.setIcon(darkcompleteBtn);
-				completeBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				completeBtn.setIcon(completebtn);
-				completeBtn.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-			}
+         @Override
+         public void mouseEntered(MouseEvent e) {
+            completeBtn.setIcon(darkcompleteBtn);
+            completeBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+         }
+         
+         @Override
+         public void mouseExited(MouseEvent e) {
+            completeBtn.setIcon(completebtn);
+            completeBtn.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+         }
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-			new SunBeat();
-			}
-		});
+         @Override
+         public void mousePressed(MouseEvent e) {
+         new SunBeat();
+         }
+      });
 
-		add(completeBtn);
+      add(completeBtn);
 
     }
 
@@ -151,12 +151,4 @@ public class SignUp extends JFrame {
         paintComponents(g);
         this.repaint();
     }
-<<<<<<< HEAD
-
-    public static void main(String[] args) {
-        new SignUp();
-    }
 }
-=======
-}
->>>>>>> 306164155ecf1993650a835d0cc3506c03b043f4
