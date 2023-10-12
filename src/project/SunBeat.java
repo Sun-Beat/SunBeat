@@ -52,8 +52,8 @@ public class SunBeat extends JFrame {
 
 	private boolean isMainScreen, isLoadingScreen, isGameScreen;
 
-	ArrayList<Track> trackList = new ArrayList<Track>();	//변수들을 담을 수 있는 하나의 배열
-	
+	ArrayList<Track> trackList = new ArrayList<Track>(); // 변수들을 담을 수 있는 하나의 배열
+
 	private Image selectedImage;
 	private Image titleImage;
 	private Music selectedMusic;
@@ -79,10 +79,13 @@ public class SunBeat extends JFrame {
 		Music introMusic = new Music("../music/intro.mp3", true);
 		introMusic.start();
 
-		trackList.add(new Track("kill this love.png","title kill this love.png","Kill This Love Selected.mp3","Kill This Love.mp3"));
-		trackList.add(new Track("beethoven virus.png","title beethoven virus.png","Beethoven Virus Selected.mp3","Beethoven Virurs.mp3"));
-		trackList.add(new Track("dangerously.png","title dangerously.png","Dangerously Selected.mp3","Dangerously.mp3"));
-		
+		trackList.add(new Track("kill this love.png", "title kill this love.png", "Kill This Love Selected.mp3",
+				"Kill This Love.mp3"));
+		trackList.add(new Track("beethoven virus.png", "title beethoven virus.png", "Beethoven Virus Selected.mp3",
+				"Beethoven Virurs.mp3"));
+		trackList.add(
+				new Track("dangerously.png", "title dangerously.png", "Dangerously Selected.mp3", "Dangerously.mp3"));
+
 		startbtn.setBounds(300, 250, 240, 500);
 		startbtn.setBorderPainted(false);
 		startbtn.setOpaque(false);
@@ -121,8 +124,8 @@ public class SunBeat extends JFrame {
 				rightbtn.setVisible(true);
 				leftbtn.setVisible(true);
 				easybtn.setVisible(true);
-				hardbtn.setVisible(true); 
-				
+				hardbtn.setVisible(true);
+
 			}
 		});
 
@@ -177,7 +180,7 @@ public class SunBeat extends JFrame {
 			}
 
 			public void mousePressed(MouseEvent e) {
-				System.exit(0);
+				new ranking();
 			}
 		});
 		add(rankbtn);
@@ -284,39 +287,43 @@ public class SunBeat extends JFrame {
 	}
 
 	public void screenDraw(Graphics g) {
-	    g.drawImage(mainScreen, 0, 0, this);
-	    if (isMainScreen) {
-	    	g.drawImage(titleImage, 350, 200, this);  
-	        g.drawImage(selectedImage, 400, 95, this);  
-	           
-	    }
-	    if (isLoadingScreen) {
-	        g.drawImage(loadingScreen, 0, 0, this);
-	    }
-	    if (isGameScreen) {
-	        g.drawImage(gameScreen, 0, 0, this);
-	    }
-	    paintComponents(g);
-	    this.repaint();
+		g.drawImage(mainScreen, 0, 0, this);
+		if (isMainScreen) {
+			g.drawImage(titleImage, 350, 200, this);
+			g.drawImage(selectedImage, 400, 95, this);
+
+		}
+		if (isLoadingScreen) {
+			g.drawImage(loadingScreen, 0, 0, this);
+		}
+		if (isGameScreen) {
+			g.drawImage(gameScreen, 0, 0, this);
+		}
+		paintComponents(g);
+		this.repaint();
 	}
 
 	public void selectedTrack(int nowSelected) {
-		if(selectedMusic != null)
+		if (selectedMusic != null)
 			selectedMusic.close();
-		titleImage = new ImageIcon(Main.class.getResource("../Images/"+ trackList.get(nowSelected).getTitleImage())).getImage();
-		selectedImage = new ImageIcon(Main.class.getResource("../Images/"+ trackList.get(nowSelected).getStartImage())).getImage();
-		selectedMusic = new Music(trackList.get(nowSelected).getStartMusic(),true);
+		titleImage = new ImageIcon(Main.class.getResource("../Images/" + trackList.get(nowSelected).getTitleImage()))
+				.getImage();
+		selectedImage = new ImageIcon(Main.class.getResource("../Images/" + trackList.get(nowSelected).getStartImage()))
+				.getImage();
+		selectedMusic = new Music(trackList.get(nowSelected).getStartMusic(), true);
 		selectedMusic.start();
 	}
+
 	public void selectLeft() {
-		if(nowSelected == 0)
-			nowSelected = trackList.size() -1;
+		if (nowSelected == 0)
+			nowSelected = trackList.size() - 1;
 		else
 			nowSelected--;
 		selectedTrack(nowSelected);
 	}
+
 	public void selectRight() {
-		if(nowSelected == trackList.size()-1)
+		if (nowSelected == trackList.size() - 1)
 			nowSelected = 0;
 		else
 			nowSelected++;

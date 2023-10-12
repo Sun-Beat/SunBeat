@@ -97,8 +97,4 @@ public class SignUp extends JFrame {
         paintComponents(g);
         this.repaint();
     }
-
-    public static void main(String[] args) {
-        new SignUp();
-    }
 }
