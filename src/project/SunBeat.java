@@ -12,10 +12,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import com.sun.tools.javac.Main;
+
 public class SunBeat extends JFrame {
 	private Image screenImage;
 	private Graphics screenGraphic;
-
+	private Image gameInfoImage=new ImageIcon(Main.class.getResource("../Images/ggameInfo.png")).getImage();
 	private Image mainScreen = new ImageIcon(Main.class.getResource("../Images/mainScreen.png")).getImage();
 	private Image loadingScreen = new ImageIcon(Main.class.getResource("../Images/gameRuleScreen.png")).getImage();
 	private Image gameScreen = new ImageIcon(Main.class.getResource("../Images/GameScreen.png")).getImage();
@@ -51,7 +53,7 @@ public class SunBeat extends JFrame {
 	private JButton darkeasybtn = new JButton(darkEasyBtn);
 
 	private boolean isMainScreen, isLoadingScreen, isGameScreen;
-
+	private boolean isGamescreen=false;
 	ArrayList<Track> trackList = new ArrayList<Track>(); // 변수들을 담을 수 있는 하나의 배열
 
 	private Image selectedImage;
