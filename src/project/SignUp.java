@@ -151,8 +151,12 @@ public class SignUp extends JFrame {
         paintComponents(g);
         this.repaint();
     }
+<<<<<<< HEAD
 
     public static void main(String[] args) {
         new SignUp();
     }
 }
+=======
+}
+>>>>>>> 306164155ecf1993650a835d0cc3506c03b043f4

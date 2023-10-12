@@ -1,6 +1,11 @@
 package project;
 
 public class Track {
+	private String titleImage;	//제목
+	private String startImage;
+	private String gameImage;
+	private String startMusic;
+	private String gameMusic;
 	public String getTitleImage() {
 		return titleImage;
 	}
@@ -31,10 +36,13 @@ public class Track {
 	public void setGameMusic(String gameMusic) {
 		this.gameMusic = gameMusic;
 	}
-	private String titleImage; //제목 이미지 
-	private String startImage;	//게임 선택 창 표시 이미지
-	private String gameImage;	//게임을 실행 했을 때 표지 이미지
-	private String startMusic; //게임 선택 창 음악
-	private String gameMusic; //게임 할 때 음악
-	
+	//public Track(String titleImage, String startImage, String gameImage, String startMusic, String gameMusic) {
+	public Track(String titleImage, String startImage,String startMusic, String gameMusic) {
+		super();
+		this.titleImage = titleImage;
+		this.startImage = startImage;
+		//this.gameImage = gameImage;
+		this.startMusic = startMusic;
+		this.gameMusic = gameMusic;
+	}
 }
