@@ -60,4 +60,8 @@ public class KeyListener extends KeyAdapter {
     	}           
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 86b4bec0fa4dee19a51a2cdcf8f537dc51149399
