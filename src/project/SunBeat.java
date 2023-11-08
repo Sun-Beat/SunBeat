@@ -3,6 +3,7 @@ package project;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -21,6 +22,8 @@ public class SunBeat extends JFrame {
 	private Image gameScreen = new ImageIcon(Main.class.getResource("../Images/GameScreen.png")).getImage();
 
 	private ImageIcon startBtn = new ImageIcon(Main.class.getResource("../Images/startBtn.png"));
+	private ImageIcon backbtn = new ImageIcon(Main.class.getResource("../Images/Backbtn.png"));
+	private ImageIcon darkbackbtn = new ImageIcon(Main.class.getResource("../Images/darkBackbtn.png"));
 	private ImageIcon darkStartBtn = new ImageIcon(Main.class.getResource("../Images/darkStartBtn.png"));
 	private ImageIcon ruleBtn = new ImageIcon(Main.class.getResource("../Images/ruleBtn.png"));
 	private ImageIcon darkruleBtn = new ImageIcon(Main.class.getResource("../Images/darkruleBtn.png"));
@@ -37,6 +40,8 @@ public class SunBeat extends JFrame {
 
 	private JButton startbtn = new JButton(startBtn);
 	private JButton darkstartbtn = new JButton(darkStartBtn);
+	private JButton Backbtn = new JButton(backbtn);
+	private JButton Darkbackbtn = new JButton(darkbackbtn);
 	private JButton rulebtn = new JButton(ruleBtn);
 	private JButton darkrulebtn = new JButton(darkruleBtn);
 	private JButton rankbtn = new JButton(rankBtn);
@@ -58,9 +63,12 @@ public class SunBeat extends JFrame {
 	private Image titleImage;
 	private Music selectedMusic;
 	private int nowSelected = 0;
+	private Music introMusic = new Music("../music/intro.mp3", true);
 
+	public static Game game = new Game();
+	
 	public SunBeat() {
-
+		
 		setTitle("SunBeat");
 		setUndecorated(true);
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
@@ -70,21 +78,23 @@ public class SunBeat extends JFrame {
 		setVisible(true);
 		setBackground(new Color(0, 0, 0, 0));
 		setLayout(null);
+	
+		addKeyListener(new KeyListener());
+		setFocusable(true);
 
 		init();
-
 	}
 
 	private void init() {
-		Music introMusic = new Music("../music/intro.mp3", true);
+		
 		introMusic.start();
 
-		trackList.add(new Track("kill this love.png", "title kill this love.png", "Kill This Love Selected.mp3",
+		trackList.add(new Track("kill this love.png", "title kill this love.png", "playImage.png", "Kill This Love Selected.mp3",
 				"Kill This Love.mp3"));
-		trackList.add(new Track("beethoven virus.png", "title beethoven virus.png", "Beethoven Virus Selected.mp3",
+		trackList.add(new Track("beethoven virus.png", "title beethoven virus.png", "playImage.png", "Beethoven Virus Selected.mp3",
 				"Beethoven Virurs.mp3"));
 		trackList.add(
-				new Track("dangerously.png", "title dangerously.png", "Dangerously Selected.mp3", "Dangerously.mp3"));
+				new Track("dangerously.png", "title dangerously.png", "playImage.png", "Dangerously Selected.mp3", "Dangerously.mp3"));
 
 		startbtn.setBounds(300, 250, 240, 500);
 		startbtn.setBorderPainted(false);
@@ -112,20 +122,8 @@ public class SunBeat extends JFrame {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-//				Music selectedMusic = new Music("Kill This Love Selected.mp3",true);
-//				selectedMusic.start();
 				introMusic.close();
-				selectedTrack(0);
-				startbtn.setVisible(false);
-				rulebtn.setVisible(false);
-				rankbtn.setVisible(false);
-				isMainScreen = true;
-				mainScreen = new ImageIcon(Main.class.getResource("../Images/GameScreen.png")).getImage();
-				rightbtn.setVisible(true);
-				leftbtn.setVisible(true);
-				easybtn.setVisible(true);
-				hardbtn.setVisible(true);
-
+				enterStartbtn();
 			}
 		});
 
@@ -249,7 +247,7 @@ public class SunBeat extends JFrame {
 			}
 
 			public void mousePressed(MouseEvent e) {
-				System.exit(0);
+				gameStart(nowSelected, "easy");
 			}
 		});
 		add(easybtn);
@@ -272,21 +270,46 @@ public class SunBeat extends JFrame {
 			}
 
 			public void mousePressed(MouseEvent e) {
-				System.exit(0);
+				gameStart(nowSelected, "hard");
+
 			}
 		});
 		add(hardbtn);
+		
+		Backbtn.setVisible(false);
+		Backbtn.setBounds(20, 50, 60, 60);
+		Backbtn.setBorderPainted(false);
+		Backbtn.setOpaque(false);
+		Backbtn.setContentAreaFilled(false);
+		Backbtn.setFocusPainted(false);
+		Backbtn.addMouseListener(new MouseAdapter() {
+
+			public void mouseEntered(MouseEvent e) {
+				Backbtn.setIcon(darkbackbtn);
+				Backbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			}
+
+			public void mouseExited(MouseEvent e) {
+				Backbtn.setIcon(backbtn);
+				Backbtn.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+
+			public void mousePressed(MouseEvent e) {
+				back();
+				}
+		});
+		add(Backbtn);
 
 	}
 
 	public void paint(Graphics g) {
 		screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		screenGraphic = screenImage.getGraphics();
-		screenDraw(screenGraphic);
+		screenDraw((Graphics2D)screenGraphic);
 		g.drawImage(screenImage, 0, 0, this);
 	}
 
-	public void screenDraw(Graphics g) {
+	public void screenDraw(Graphics2D g) {
 		g.drawImage(mainScreen, 0, 0, this);
 		if (isMainScreen) {
 			g.drawImage(titleImage, 350, 200, this);
@@ -297,8 +320,9 @@ public class SunBeat extends JFrame {
 			g.drawImage(loadingScreen, 0, 0, this);
 		}
 		if (isGameScreen) {
-			g.drawImage(gameScreen, 0, 0, this);
+			game.screenDraw(g);
 		}
+		
 		paintComponents(g);
 		this.repaint();
 	}
@@ -328,5 +352,44 @@ public class SunBeat extends JFrame {
 		else
 			nowSelected++;
 		selectedTrack(nowSelected);
+	}
+
+	public void gameStart(int nowSelected, String difficulty) {
+		if (selectedMusic != null)
+			selectedMusic.close();
+		isMainScreen = false;
+		leftbtn.setVisible(false);
+		rightbtn.setVisible(false);
+		hardbtn.setVisible(false);
+		easybtn.setVisible(false);
+		mainScreen = new ImageIcon(Main.class.getResource("../Images/" + trackList.get(nowSelected).getGameImage()))
+				.getImage();
+		Backbtn.setVisible(true);
+		isGameScreen = true;
+	}
+	public void back() {
+		isMainScreen = true;
+		leftbtn.setVisible(true);
+		rightbtn.setVisible(true);
+		hardbtn.setVisible(true);
+		easybtn.setVisible(true);
+		mainScreen = new ImageIcon(Main.class.getResource("../Images/GameScreen.png")).getImage();
+		Backbtn.setVisible(false);
+		isGameScreen = false;
+		selectedTrack(nowSelected);
+	}
+	public void enterStartbtn() {
+		
+		startbtn.setVisible(false);
+		rulebtn.setVisible(false);
+		rankbtn.setVisible(false);
+		isMainScreen = true;
+		mainScreen = new ImageIcon(Main.class.getResource("../Images/GameScreen.png")).getImage();
+		rightbtn.setVisible(true);
+		leftbtn.setVisible(true);
+		easybtn.setVisible(true);
+		hardbtn.setVisible(true);
+		introMusic.close();
+		selectedTrack(0);
 	}
 }
