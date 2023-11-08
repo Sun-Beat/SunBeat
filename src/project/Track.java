@@ -39,6 +39,9 @@ public class Track {
 	public void setGameMusic(String gameMusic) {
 		this.gameMusic = gameMusic;
 	}
+<<<<<<< HEAD
+	public Track(String titleImage, String startImage, String gameImage, String startMusic, String gameMusic) {
+=======
 	public String getTitleName() {
 		return titleName;
 	}
@@ -47,10 +50,11 @@ public class Track {
 	}
 	
 	public Track(String titleImage, String startImage, String startMusic, String gameMusic, String titleName) {
+>>>>>>> 86b4bec0fa4dee19a51a2cdcf8f537dc51149399
 		super();
 		this.titleImage = titleImage;
 		this.startImage = startImage;
-		//this.gameImage = gameImage;
+		this.gameImage = gameImage;
 		this.startMusic = startMusic;
 		this.gameMusic = gameMusic;
 		this.titleName = titleName;
